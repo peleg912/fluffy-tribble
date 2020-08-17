@@ -91,7 +91,10 @@ public class Company {
 				+ coupons + "]";
 	}
 
-
+//	@Override
+//	public String toString() {
+//		return "Company [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + " + ]";
+//	}
 	
 	
 
