@@ -1,0 +1,148 @@
+<br><br>
+<div class="check">
+ <form class="example-form" >
+  <mat-form-field class="example-full-width">
+    <input type="text"
+           placeholder="Search coupon"
+           aria-label="Number"
+           matInput
+           [(formControl)]="myControl"
+           [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option  *ngFor="let option of filteredOptions | async" [value]="option" (click)="openDialog3(option)">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete> 
+  </mat-form-field>
+</form> &nbsp; &nbsp;&nbsp;
+<button mat-raised-button [matMenuTriggerFor]="menu" style="color: black; background-color: white;" >Sort By</button> &nbsp;&nbsp;
+<button mat-raised-button (click)="showMain()" *ngIf="showAllBtn" style="color: black; background-color: white;">show all</button>
+</div>
+<br><br>
+
+ 
+<mat-menu #menu="matMenu">
+    <button mat-menu-item  [matMenuTriggerFor]="cats">Category</button>
+    <button mat-menu-item  [matMenuTriggerFor]="price">Price</button>
+</mat-menu>
+
+
+
+<mat-menu #cats="matMenu">
+  <div *ngFor="let item of keys()">
+  <button mat-menu-item (click)="sortByCategory(item)">{{item}}</button>
+</div>
+</mat-menu>
+
+<mat-menu #price="matMenu">
+  <div *ngFor="let p of prices">
+  <button mat-menu-item (click)="sortByPrice(p)" > Up to {{p}} </button>
+</div>
+</mat-menu>
+
+<div *ngIf="showMainTable && coupons" >
+    <h2 *ngIf="coupons.length == 0">No registered coupons at the moment...</h2>
+    <table *ngIf="coupons.length > 0" class="pure-table pure-table-horizontal">
+          <tr >
+            <th></th>
+            <th >Title </th>
+            <th >Description </th>
+            <th >Amount </th>
+            <th >Price </th>
+            <th >Start Date </th>
+            <th >End Date </th>
+            <th >Category </th>
+            <th >Functions </th>
+
+          </tr>
+
+          <tr *ngFor="let c of coupons">
+              <td><img  src={{c.image}} (click)= "openDialog2(c.image)" matTooltip="open"/></td>
+              <td>{{c.title}}</td>
+              <td>{{c.description}}</td>
+              <td>{{c.amount}}</td>
+              <td>{{c.price}}</td>
+              <td>{{c.startDate}}</td>
+              <td>{{c.endDate}}</td>
+              <td>{{c.category}}</td>
+             
+              
+              <td>
+                <button mat-icon-button (click)= "openDialog(c.id, c.title)" matTooltip="update"><mat-icon>update</mat-icon> </button> 
+                <button mat-icon-button  (click)= "deleteCoupon(c.id)" matTooltip="delete"><mat-icon>delete_outline</mat-icon> </button> 
+              </td>
+          </tr>
+          </table>
+</div>
+
+<div *ngIf="showByCat">
+    <h2 *ngIf="couponsByCat.length == 0 ">No registered coupons  from this category at the moment...</h2>
+    <table *ngIf="couponsByCat.length > 0" class="pure-table pure-table-horizontal">
+          <tr >
+            <th></th>
+            <th >Title </th>
+            <th >Description </th>
+            <th >Amount </th>
+            <th >Price </th>
+            <th >Start Date </th>
+            <th >End Date </th>
+            <th >Category </th>
+            <th >Functions </th>
+
+          </tr>
+
+          <tr *ngFor="let co of couponsByCat">
+              <td><img  src={{co.image}} (click)= "openDialog2(co.image)" matTooltip="open"/></td>
+              <td>{{co.title}}</td>
+              <td>{{co.description}}</td>
+              <td>{{co.amount}}</td>
+              <td>{{co.price}}</td>
+              <td>{{co.startDate}}</td>
+              <td>{{co.endDate}}</td>
+              <td>{{co.category}}</td>
+             
+              
+              <td>
+                <button mat-icon-button (click)= "openDialog(co.id, co.title)" matTooltip="update"><mat-icon>update</mat-icon> </button>
+                <button mat-icon-button  (click)= "deleteCoupon(co.id)" matTooltip="delete"><mat-icon>delete_outline</mat-icon> </button> 
+              
+              </td>
+          </tr>
+          </table>
+</div>
+
+<div *ngIf="showByPrice">
+  <h2 *ngIf="couponsByPrice.length == 0">No registered coupons below this price at the moment...</h2>
+  <table *ngIf="couponsByPrice.length > 0" class="pure-table pure-table-horizontal" >
+        <tr >
+          <th></th>
+          <th >Title </th>
+          <th >Description </th>
+          <th >Amount </th>
+          <th >Price </th>
+          <th >Start Date </th>
+          <th >End Date </th>
+          <th >Category </th>
+          <th >Functions </th>
+
+        </tr>
+
+        <tr *ngFor="let coup of couponsByPrice">
+            <td><img  src={{coup.image}} (click)= "openDialog2(coup.image)" matTooltip="open"/></td>
+            <td>{{coup.title}}</td>
+            <td>{{coup.description}}</td>
+            <td>{{coup.amount}}</td>
+            <td>{{coup.price}}</td>
+            <td>{{coup.startDate}}</td>
+            <td>{{coup.endDate}}</td>
+            <td>{{coup.category}}</td>
+           
+            
+            <td>
+              <button mat-icon-button (click)= "openDialog(coup.id, coup.title)" matTooltip="update"><mat-icon>update</mat-icon> </button> 
+              <button mat-icon-button  (click)= "deleteCoupon(coup.id)" matTooltip="delete"><mat-icon>delete_outline</mat-icon> </button> 
+            
+            </td>
+        </tr>
+        </table>
+</div>

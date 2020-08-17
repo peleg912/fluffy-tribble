@@ -1,0 +1,25 @@
+<div  class="divy" *ngIf="company">
+    <br>
+    <img src= "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQpQ2pdRFQNGZRLDnCdtiYBUZs1PvaxiAZDbA&usqp=CAU">
+    <br><br>
+
+    <h1 class="h1">{{company.name}}</h1><br><br>
+
+            <div class="wrapper">
+                <div>
+                     <img  class="smallpic" src="https://i.pinimg.com/originals/6e/36/3b/6e363b1da42a7c469332a99edfa65807.png" matTooltip="email adress"><br>
+                     <h2 >{{company.email}}</h2>
+                    </div>
+                <div>
+                    <img class="smallpic" src="https://img.icons8.com/all/500/forgot-password.png" matTooltip="password"><br>
+                    <h2 >{{company.password}}</h2>
+                </div>
+            </div> <br>
+                    <div>
+                        <img style="text-align: center;"  class="smallpic" src="https://static.thenounproject.com/png/2522-200.png" matTooltip="registerd coupons"> <br> 
+                        <h2 >{{length}}</h2>
+                    </div>
+       
+
+</div>
+

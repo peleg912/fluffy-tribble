@@ -1,0 +1,44 @@
+<br><br>
+
+ <form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input type="text"
+           placeholder="Search customer"
+           aria-label="Number"
+           matInput
+           [(formControl)]="myControl"
+           [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option" (click)="openDialog2(option)">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+<br><br>
+<div>
+    <table class="pure-table pure-table-horizontal"  >
+          <tr >
+            <th >First Name </th>
+            <th >Last Name </th>
+            <th >Email </th>
+            <th >Password </th>
+            <th >Functions </th>
+          </tr>
+  
+     
+          <tr *ngFor="let c of customers">
+            <td>{{c.firstName}}</td>
+            <td>{{c.lastName}}</td>
+            <td>{{c.email}}</td>
+              <td>{{c.password}}</td>
+              
+              <td>
+                <button mat-icon-button (click)= "openDialog(c.id)" matTooltip="update"><mat-icon>update</mat-icon> </button> &nbsp;
+                <button mat-icon-button  (click)= "deleteCustomer(c.id)" matTooltip="delete"><mat-icon>delete_outline</mat-icon> </button> &nbsp;
+              </td>
+          </tr>
+   
+          </table>
+</div>
+

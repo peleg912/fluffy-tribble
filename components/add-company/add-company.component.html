@@ -1,0 +1,25 @@
+<div class="con">
+            <form [formGroup]="addForm">
+                <mat-form-field appearance="outline">
+                    <mat-label>Company Name</mat-label>
+                    <input type="text" matInput formControlName="name"/>
+                    <mat-error *ngIf="addForm.controls['name'].invalid">Please enter a name.</mat-error>
+                 </mat-form-field><br>
+
+                 <mat-form-field appearance="outline">
+                    <mat-label>Company Email</mat-label>
+                    <input type="email" matInput formControlName="email"/>
+                    <mat-error *ngIf="addForm.controls['email'].invalid">Please enter a valid email.</mat-error>
+                 </mat-form-field><br>
+
+                 <mat-form-field appearance="outline">
+                    <mat-label>Company Password</mat-label>
+                    <input type="email" matInput formControlName="pass"/>
+                    <mat-error *ngIf="addForm.controls['pass'].invalid">Please enter a valid password.</mat-error>
+                 </mat-form-field><br><br>
+
+                 <button mat-fab matTooltip= "add" (click)= "addCompany()" style="color: black; background-color: white;"> 
+                    <mat-icon> add_to_queue</mat-icon>
+                  </button>
+            </form> 
+    </div>

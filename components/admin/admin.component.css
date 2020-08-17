@@ -1,0 +1,23 @@
+.btnlook{
+    width: 140px; height:140px;
+    margin: 60px;
+    background-color: white;
+    border-radius: 70px;
+    cursor: pointer;
+    
+  }
+
+  #show{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  
+  }
+
+
+  .divy{
+    height: 700px;
+    background-color:  #b3ccff;
+   
+  }

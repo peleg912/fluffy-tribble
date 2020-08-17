@@ -1,0 +1,25 @@
+<div class="wraper" >
+    <div class= "bigDiv">
+        <br>
+       <h2 style="font-family: fantasy; font-size: 26pt;">MY WISH LIST 🖤</h2> <br>
+       <mat-divider ></mat-divider> 
+        <ul style="list-style-type: none; width: 100%; height: fit-content; " >
+             <li style="margin-left: -40px;" *ngFor="let coupon of favoriteCoupons">
+                 <div  class="gridy"> 
+                    <div class="item">
+                   <img src={{coupon.image}}> <br>
+                </div>
+                <div class="item">
+                    <h1><b>{{coupon.title}}</b></h1>
+                    <h2> <b>{{coupon.price | currency}}</b></h2>
+                     <button mat-raised-button (click)="purchaseCoupon(coupon)">BUY!</button>
+                 </div>
+                </div> 
+                <mat-divider></mat-divider>
+            </li>
+        </ul>
+    
+    
+        
+    </div>
+    </div>

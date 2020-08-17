@@ -1,0 +1,77 @@
+<div class="container" *ngIf="customer">
+  <div class="mini-container">
+
+    <div class="hi" >
+       <h1 style="font-size: 32pt; font-family: fantasy;"> Hi, <br> <br>
+       <b> {{customer.firstName}}</b> ❤</h1>
+    </div>
+
+   
+    <mat-menu #menu="matMenu">
+        <span *ngFor="let item of keys()">
+      <button mat-menu-item (click)="getCouponsByCategory(item)">{{item}}</button>
+        </span>
+    </mat-menu>
+
+    <mat-menu #menu2="matMenu">
+        <span *ngFor="let p of prices">
+      <button mat-menu-item (click)="getCouponsByMaxPrice(p)">up to {{p}}</button>
+        </span>
+    </mat-menu>
+
+
+   
+    <div class="item">
+        <button mat-raised-button class="btn" (click)="showProfile()"> My Details</button>
+        <br><br><br>
+       <button mat-raised-button class="btn" (click)="showOrders()">My orders</button>
+        <br><br><br>
+       <button mat-raised-button [matMenuTriggerFor]="menu" class="btn" >My orders by Catagory</button>
+        <br><br><br>
+       <button mat-raised-button [matMenuTriggerFor]="menu2" class="btn">My orders by price</button>
+    </div>
+
+    </div>
+
+    <div class="content1" *ngIf="profile">
+        <br>
+        <h2 class="wte">FIRST NAME</h2>
+        <span class="wte2" >{{customer.firstName}}</span><br><br>
+        <h2  class="wte">LAST NAME</h2>
+        <span class="wte2" >{{customer.lastName}}</span><br><br>
+        <h2  class="wte">Email</h2>
+        <span class="wte2" >{{customer.email}}</span><br><br>
+        <h2  class="wte" >Password</h2>
+        <span class="wte2">{{customer.password}}</span>
+        
+       
+    </div>
+
+    <div class="content" *ngIf="orders" >
+        <h2 class="wte">Your Orders</h2>
+        <div class="gridy">
+        <div *ngFor="let c of coupons" class="imgwrapper">
+          <img src={{c.image}}> <br> <span ><b>{{c.title}}</b></span>
+          
+        </div> 
+        </div>
+    </div>
+
+    <div class="content" *ngIf="byCat">
+        <h2 class="wte">Your Orders</h2>
+         <div class="gridy">
+            <div *ngFor="let c of couponsByCategory" class="imgwrapper">
+              <img src={{c.image}}> <br> <span ><b>{{c.title}}</b></span>
+            </div> 
+            </div>
+     </div>
+
+     <div class="content" *ngIf="byPrice">
+        <h2 class="wte">Your Orders</h2>
+        <div class="gridy">
+        <div *ngFor="let c of couponsByMaxPrice" class="imgwrapper">
+          <img src={{c.image}}> <br> <span ><b>{{c.title}}</b></span>
+        </div> 
+        </div>
+
+</div>

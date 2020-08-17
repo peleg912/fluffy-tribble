@@ -1,0 +1,62 @@
+
+<div class="con" >
+            <form [formGroup]="addForm" style="margin-top: 15px;">
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Title</mat-label>
+                    <input type="text" matInput formControlName="title"/>
+                    <mat-error *ngIf="addForm.controls['title'].invalid">Please enter a  coupon title.</mat-error>
+                 </mat-form-field> &nbsp; &nbsp;
+
+                 <mat-form-field appearance="outline">
+                    <mat-label>Description</mat-label>
+                    <input type="text" matInput formControlName="des"/>
+                    <mat-error *ngIf="addForm.controls['des'].invalid">Please enter a coupon description.</mat-error>
+                 </mat-form-field><br>
+
+                 <mat-form-field appearance="outline">
+                    <mat-label>Amount</mat-label>
+                    <input type="number" matInput formControlName="amount"/>
+                    <mat-error *ngIf="addForm.controls['amount'].invalid">Please enter a valid coupon amount.</mat-error>
+                 </mat-form-field>&nbsp; &nbsp;
+
+
+                 <mat-form-field appearance="outline">
+                    <mat-label>Price</mat-label>
+                    <input type="number" matInput formControlName="price"/>
+                    <mat-error *ngIf="addForm.controls['price'].invalid">Please enter a valid password.</mat-error>
+                 </mat-form-field><br><br>
+
+                 <mat-form-field appearance="outline">
+                    <mat-label>Start Date</mat-label>
+                    <input type="date" matInput formControlName="sdate"/>
+                    <mat-error *ngIf="addForm.controls['sdate'].invalid">Please enter a valid start date.</mat-error>
+                 </mat-form-field>&nbsp; &nbsp;
+
+                 <mat-form-field appearance="outline">
+                    <mat-label>End Date</mat-label>
+                    <input type="date" matInput formControlName="edate"/>
+                    <mat-error *ngIf="addForm.controls['edate'].invalid">Please enter a valid end date.</mat-error>
+                 </mat-form-field><br><br>
+
+                 <mat-form-field >
+                    <mat-label>Category</mat-label>
+                    <mat-select  formControlName="category" >
+                      <mat-option *ngFor="let item of keys()" [value]="item">
+                        {{item}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="addForm.controls['category'].invalid">Please choose coupon category.</mat-error>
+                </mat-form-field>&nbsp; &nbsp;
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Img Source</mat-label>
+                    <input type="text" matInput formControlName="img"/>
+                    <mat-error *ngIf="addForm.controls['img'].invalid">Please enter a valid image adress.</mat-error>
+                 </mat-form-field><br><br>
+
+                 <button mat-fab matTooltip= "add" (click)= "addCoupon()" style="color: black; background-color: white;"> 
+                    <mat-icon> add_to_queue</mat-icon>
+                  </button>
+            </form> 
+    </div>

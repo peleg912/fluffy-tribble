@@ -1,0 +1,19 @@
+<div class="divy" *ngIf="coupon">
+<div class="wrapper">
+
+<div class="imgwrapper">
+<img src={{coupon.image}}/>
+</div>
+
+<div class="content" style="font-family: fantasy;">
+  <h1 style="font-family: fantasy; text-align: center; font-size: 28pt; color: white;">{{coupon.title}}</h1> <br>
+  <h2 style="font-family: fantasy; text-align: center; font-size: 22pt;">{{coupon.description}}</h2> <br>
+  <h2  class="det" style="text-decoration: underline;">Some Details...</h2>
+  <h2 class="det">Price: {{coupon.price | currency}} </h2>
+  <h2 class="det">only {{coupon.amount}} left!</h2>
+  <h2 class="det">Avialble until: {{coupon.endDate}} </h2> <br>
+  <button mat-raised-button	(click)="addToCart()" style="background-color: black; color: white;" >ADD TO CART</button> &nbsp;&nbsp; <button mat-raised-button	(click)="purchaseCoupon(coupon)" style="background-color: white; color: black;">BUY NOW!</button>  
+</div>
+
+</div>
+</div>
